@@ -15,26 +15,26 @@
 
     <select id="selectAllMenu" resultMap="menuResultMap">
         SELECT
-            MENU_CODE,
-            MENU_NAME,
-            MENU_PRICE,
-            CATEGORY_CODE,
-            ORDERABLE_STATUS
-          FROM TBL_MENU
-         WHERE ORDERABLE_STATUS = 'Y'
-         ORDER BY MENU_CODE
+        MENU_CODE,
+        MENU_NAME,
+        MENU_PRICE,
+        CATEGORY_CODE,
+        ORDERABLE_STATUS
+        FROM TBL_MENU
+        WHERE ORDERABLE_STATUS = 'Y'
+        ORDER BY MENU_CODE
     </select>
 
     <select id="selectByMenuCode" parameterType="_int" resultMap="menuResultMap">
         SELECT
-            MENU_CODE,
-            MENU_NAME,
-            MENU_PRICE,
-            CATEGORY_CODE,
-            ORDERABLE_STATUS
-          FROM TBL_MENU
-         WHERE ORDERABLE_STATUS = 'Y'
-           AND MENU_CODE = #{ code }
+        MENU_CODE,
+        MENU_NAME,
+        MENU_PRICE,
+        CATEGORY_CODE,
+        ORDERABLE_STATUS
+        FROM TBL_MENU
+        WHERE ORDERABLE_STATUS = 'Y'
+        AND MENU_CODE = #{ code }
     </select>
 
     <!--
@@ -44,30 +44,30 @@
     -->
     <insert id="registMenu" parameterType="com.ohgiraffers.dto.MenuDTO">
         INSERT INTO TBL_MENU(
-            MENU_NAME,
-            MENU_PRICE,
-            CATEGORY_CODE,
-            ORDERABLE_STATUS
+        MENU_NAME,
+        MENU_PRICE,
+        CATEGORY_CODE,
+        ORDERABLE_STATUS
         ) VALUES (
-            #{ name }, <!--필드 이름-->
-            #{ price },
-            #{ categoryCode },
-            'Y'
+        #{ name }, <!--필드 이름-->
+        #{ price },
+        #{ categoryCode },
+        'Y'
         )
     </insert>
 
     <insert id="modifyMenu" parameterType="com.ohgiraffers.dto.MenuDTO">
         UPDATE TBL_MENU
-           SET MENU_NAME = #{ name },
-               MENU_PRICE = #{ price },
-               CATEGORY_CODE = #{ categoryCode },
-               ORDERABLE_STATUS = #{ orderableStatus }
-         WHERE MENU_CODE = #{ code }
+        SET MENU_NAME = #{ name },
+        MENU_PRICE = #{ price },
+        CATEGORY_CODE = #{ categoryCode },
+        ORDERABLE_STATUS = #{ orderableStatus }
+        WHERE MENU_CODE = #{ code }
     </insert>
 
     <delete id="deleteMenu">
         DELETE FROM TBL_MENU
-         WHERE MENU_CODE = #{ code }
+        WHERE MENU_CODE = #{ code }
     </delete>
 
 </mapper>
